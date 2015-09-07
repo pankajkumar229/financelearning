@@ -1,0 +1,50 @@
+1. First of all there will be user accounts and groups as people register. 
+
+User options:
+
+
+Data ingestion:
+
+ Register Data: 
+     Give it the schema of the data
+     Specify which fields should be searchable and if possible specify a search syntax, for eg if your data is a set of emails, you should be able to specify from:a , date between (a and b)
+     The schema and the search indexes will be maintained in git
+     Ask the user what is important with the data ACID or Availability or Consistency or Partition protection and create the database accordingly
+     Some research needed as to whether keep all these data relational or just a GFS type, later might be simpler but might take more space. Maybe we can ask when taking the schema if space will be an issue. 
+
+ Publish/Update Data:
+     Just update data. IF the data is verified correctly, new data will be updated. All updates will be revertable to any timestamp
+
+ Access Control:
+     Owners should be able to give others control of the data or a view of the data to other users to share (or sell)
+
+ Maintainance:
+     Update the schema of a database as needs change
+
+(Use the best third party product, incorporate any extra features it supports, maybe allow caching layer as well, ultimately all data should be accessible to H2o AI)
+ 
+
+Data manipulation:
+  Online editor/IDE to create custom R scripts and H2o AI scripts to create models on top of data 
+      For eg, someone could take a data set and make moving averages on top of it.
+              someone could take a data set and make a neural net from it.
+              someone could take a data set and fit a logistic regression from it.
+              someone could do dimensionality reduction on data.
+      Everything will be made simpler and GUI based like in H2O AI, good defaults parameters will be established 
+
+  In the IDE, you can pick a subset of data to build your model quickly
+  In the IDE, There will be various GUIs to evaluate and analyze the models. 
+       Classifier independent GUI for cross validation, visualizing multi-dimensional data
+       Classifier or Clustering dependent GUI: Like for eg , something different for linear regression vs logistic regression
+  Once the model is built, it will be an R object. The R code will be maintained in git and the corresponding R object somewhere on the file system.
+  
+
+Running models on big data sets:
+  Depending on the configuration, models will be run on data as data gets updated with the level of concurrency and speed that is required.
+  The result will itself become data and get stored in the database.
+
+Data Presentation:
+  GUI: Define views on top of data 
+  It will be backed by GGPlot and D3 so it looks super nice
+
+       
